@@ -1,0 +1,13 @@
+{
+    http_port 4380
+    https_port 4343
+}
+
+http://(REPLACE_WITH_HOSTNAME):4380 {
+    redir https://{host}:4343{uri}
+}
+
+https://(REPLACE_WITH_HOSTNAME):4343 {
+    tls internal
+    reverse_proxy searxng:8080
+}

@@ -1,0 +1,30 @@
+services:
+  searxng:
+    image: searxng/searxng:latest
+    container_name: searxng
+    restart: unless-stopped
+    volumes:
+      - ./searxng-data:/etc/searxng
+    environment:
+      - BASE_URL=https://(REPLACE_WITH_HOSTNAME):4343/
+    networks:
+      - searxng-net
+    ports:
+      - "8080:8080"
+  
+  caddy:
+    image: caddy:latest
+    container_name: caddy
+    restart: unless-stopped
+    ports:
+      - "4380:4380"
+      - "4343:4343"
+    volumes:
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile
+      - ./caddy/data:/data
+      - ./caddy/config:/config
+    networks:
+      - searxng-net
+
+networks:
+  searxng-net:
