@@ -11,7 +11,7 @@ Create a searxng instance using caddy for TLS encryption.
 Note: By default this will use non-default ports. Port 4380 for HTTP, and port 4343 for HTTPS.
 If you want to use different ports (or default ports) replace all occurrences in `compose.yml` and `caddy/Caddyfile`.
 
-You should now be able to access searxng at `https://(HOSTNAME):4343/`. The default searxng port is also accessible (8080, HTTP).
+You should now be able to access searxng at `https://(HOSTNAME):4343/`. 
 
 ### Root certificate
 To get the root certificate to add to your browser: `sudo docker cp caddy:/data/caddy/pki/authorities/local/root.crt .`

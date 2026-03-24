@@ -4,13 +4,13 @@ services:
     container_name: searxng
     restart: unless-stopped
     volumes:
-      - ./searxng-data:/etc/searxng
+      - ./searxng:/etc/searxng
     environment:
       - BASE_URL=https://(REPLACE_WITH_HOSTNAME):4343/
     networks:
       - searxng-net
-    ports:
-      - "8080:8080"
+    expose:
+      - "8080"
   
   caddy:
     image: caddy:latest
